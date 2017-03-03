@@ -11819,6 +11819,7 @@ $( document ).ready(code_toggle);
 </ul>
 </li>
 <li><a href="#4.-Future-Work">4 Future Work</a></li>
+<li><a href="#5.-Conclusion">5 Conclusion</a></li>
 </ul>
 
 </div>
@@ -11895,8 +11896,8 @@ $( document ).ready(code_toggle);
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Lending Club is the world's largest peer-to-peer online borrowing platform. It connects borrowers with investors in the capital market, and as a result it adds mobility to the market and improves the overall wellfare of the society. Lending Club offers access to a pool of loans with different risks, and meanwhile, Lending Club evaluates the default probability of each loan to assist investors in loan selection and risk control. Accordingly, the interest rates of loans are based on the default probabilities, and are fixed throughout the term of the loans. Investors can select loans into their investment portfolios based on their risk and return preference. On the other side, borrowers can select to prepay the loans at any time during the term to eliminate future interest payments without any prepayment penalty or fees. If the borrowers fail to meet the repayment requirements within a certain period past due date, the loans are considered as "defaulted".</p>
-<p>This project explores the data of Lending Club loans and predicts the loan outcomes (default or non-default) using a variety of classification models. The prediction models are built with accessible information available to all investors, and do not rely on any third-party credit scores, Lending Club credit grades, or interest rates.</p>
+<p>Lending Club is the world's largest peer-to-peer online borrowing platform. It connects borrowers with investors in the capital market, and as a result it adds mobility to the market and improves the overall wellfare of society. Lending Club offers access to a pool of loans with different risks, and meanwhile, Lending Club evaluates the default probability of each loan to assist investors in loan selection and risk control. Accordingly, the interest rates of loans are based on the default probabilities and are fixed throughout the term of the loans. Investors can select loans for their investment portfolios based on their risk and return preference. On the other hand, borrowers can select to prepay the loans at any time during the term to eliminate future interest payments without any prepayment penalty or fees. If the borrowers fail to meet the repayment requirements within a certain period past the due date, the loans are considered "defaulted".</p>
+<p>This project explores the data of Lending Club loans and predicts the loan outcomes (default or non-default) using a variety of classification models. The prediction models are built with accessible information available to all investors and do not rely on any third-party credit scores, Lending Club credit grades, or interest rates.</p>
 
 </div>
 </div>
@@ -11915,9 +11916,9 @@ $( document ).ready(code_toggle);
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>&nbsp;&nbsp; This project uses the Lending Club loans issued in the first three quarters of 2016, with a total number of 330,867. Each of the loans has one of the status such as "Current", "Fully Paid", "Charged Off", etc. In this project I treat the "Current" status as an unknown status, and focus the analysis on the loans with known status, meaning they are either "Fully Paid" (meaning non-default) or "Default" (including "Charged Off", "Late", "In Grace Period", "Does not meet the credit policy", "Default").</p>
-<p>&nbsp;&nbsp; For each loan there are 115 features provided, and the description of the features is also available on the Lending Club website. Variables with more than 10% missing values are dropped from the data set, and for the remaining missing data, I used the "impute" function in scikit-learn to fill the missing data with the mean of the variable in the whole data set.</p>
-<p>&nbsp;&nbsp; To get more information about the loans and borrowers, I looked up the borrower's neighborhood average income using zipcode information. Also I pre-processed the data to deal with string type variables (such as issue date), constant or meaningless variables (such as borrower ID), "Post-hoc" variables (such as last payment amount of the loan), and human-generated credit scores. Then, I dropped highly correlated variables (with heatmap) to avoid multicollinearity issue. Lastly, I log-transformed some variables (such as annual income) to ensure normal distributions and to deal with outliers.</p>
+<p>&nbsp;&nbsp; This project uses the Lending Club loans issued in the first three quarters of 2016, with a total number of 330,867. Each of the loans has a status such as "Current", "Fully Paid", "Charged Off", etc. In this project I treat the "Current" status as an unknown status and focus the analysis on the loans with known status, meaning they are either "Fully Paid" (meaning non-default) or "Default" (including "Charged Off", "Late", "In Grace Period", "Does not meet the credit policy" and "Default").</p>
+<p>&nbsp;&nbsp; For each loan there are 115 features provided, and the description of the features is also available on the Lending Club website. Variables with more than 10% missing values are dropped from the data set, and for the remaining missing data, I used the "impute" function in scikit-learn to fill in the missing data with the mean of the variable in the whole data set.</p>
+<p>&nbsp;&nbsp; To get more information about the loans and borrowers, I looked up the borrower's neighborhood average income using zipcode information. Also I pre-processed the data to deal with string type variables (such as issue date), constant or meaningless variables (such as borrower ID), "Post-hoc" variables (such as last payment amount of the loan), and human-generated credit scores. Then, I dropped highly correlated variables (with heatmap) to avoid the multicollinearity issue. Lastly, I log-transformed some variables (such as annual income) to ensure normal distributions and to deal with outliers.</p>
 
 </div>
 </div>
@@ -11945,8 +11946,8 @@ $( document ).ready(code_toggle);
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>&nbsp;&nbsp; Before building the prediction models, I conducted some exploratory data anlysis by visualizing the relationships between some variables and the loan's outcome.</p>
-<p>&nbsp;&nbsp; Firstly, I explored the relationship between the loan's amount and borrower's (log-transformed) annual income and plotted the average annual income of borrowers for different range of loan amounts and for both default and non-default groups. From the figure we can see that the average annual income of the borrowers of non-defualt loans are generally higher than that of the borrowers of the defaulted loans, which is consistent with our intuition. Also, the two curves are apart at small loan amounts, but converges towards each other after the loan amount exceeds \$20,000.  This provides a very interesting implication: for loans with size smaller than \$20,000, the borrower's annual income is a very important indicator for the loan's outcome. However, for large loans with amount greater than \$20,000, the borrower's annual income does not make a significant difference to the loan's outcome.</p>
+<p>&nbsp;&nbsp; Before building the prediction models, I conducted some exploratory data anlysis by visualizing the relationships between the variables and the loans' outcomes.</p>
+<p>&nbsp;&nbsp; Firstly, I explored the relationship between a loan's amount and the borrower's (log-transformed) annual income and plotted the average annual income of borrowers for different ranges of loan amounts and for both default and non-default groups. From the figure we can see that the average annual income of the borrowers of non-defualt loans is generally higher than that of the borrowers of the defaulted loans, which is consistent with our intuition. Also, the two curves are apart at small loan amounts but converge after the loan amount exceeds \$20,000.  This finding provides a very interesting implication: for loans smaller than \$20,000, the borrower's annual income is a very important indicator for the loan's outcome. However, for loans greater than \$20,000, the borrower's annual income does not make a significant difference to the loan's outcome.</p>
 
 </div>
 </div>
@@ -12363,7 +12364,7 @@ YII=
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>&nbsp;&nbsp; Then I plotted the curves of the debt-to-income ratio against the loan's amount in the same way as above. Generally the borrowers of defaulted loans have higher debt-to-income ratios than the borrowers of non-default loans. Similarly, the two curves are clearly separated at small loan amounts, but they converge towards each other as the loan amount grows. This indicates that the debt-to-income ratio can help predict the results of small loans, but for large amount loans, the influence of debt-to-income ratio on loan's outcome is not very clear.</p>
+<p>&nbsp;&nbsp; Then I plotted the curves of the debt-to-income ratio against the loan's amount in the same way as above. Generally the borrowers of defaulted loans have higher debt-to-income ratios than the borrowers of non-default loans. Similarly, the two curves are clearly separated at small loan amounts, but they converge as the loan amount grows. This fact indicates that the debt-to-income ratio can help predict the results of small loans, but for large loans, the influence of the debt-to-income ratio on a loan's outcome is not very clear.</p>
 
 </div>
 </div>
@@ -12760,7 +12761,7 @@ mVktThhmZlaLE4aZmdXyL/sj+931AW1YAAAAAElFTkSuQmCC
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>&nbsp;&nbsp; The type of home ownership is also related with loan outcomes, since home ownership is a strong indication of the borrower's financial situation and also influences the borrower's disposable income. From the barplot below we can see that the borrowers with "Rent" type of home ownership have a higher proportion of defaulted loans than the borrowers with "Mortgage" and "Own" types of home ownership. This makes sense because people who own a house and people who got approved for mortgage are more likely to have stable income cash flows and good credit history than people who rent a house to live.</p>
+<p>&nbsp;&nbsp; The type of home ownership is also related to the loan's outcome, since home ownership is a strong indication of the borrower's financial situation and also influences the borrower's disposable income. From the barplot below we can see that the borrowers with "Rent" type of home ownership have a higher proportion of defaulted loans than the borrowers with "Mortgage" and "Own" types of home ownership. This makes sense because people who own a house and people who got approved for mortgages are more likely to have stable cash flows and good credit history than people who rent.</p>
 
 </div>
 </div>
@@ -13026,8 +13027,8 @@ M7Occ6A3M8s5B3ozs5xzoDczyzkHejOznPv/wTknms/MYj0AAAAASUVORK5CYII=
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>&nbsp;&nbsp; In this part, I used three methods to select the most predictive features for loan's outcome: Lasso (L1 regularization), Random Forest Importance Rank, and Step-wise Backward Feature Selection. These three methods are used in combination to select the "best" set of predictors according to Akaike information criterion (AIC).
-&nbsp;&nbsp; The most relevant features include loan's amount, term, verification status, purpose, and the borrower's home ownership, annual income, employment length, number of open accounts, etc.</p>
+<p>&nbsp;&nbsp; I used three methods to select the most predictive features for a loan's outcome: Lasso (L1 regularization), Random Forest Importance Rank, and Step-wise Backward Feature Selection. These three methods are used in combination to select the "best" set of predictors according to Akaike information criterion (AIC).
+&nbsp;&nbsp; The most relevant features include the loan's amount, term, verification status, purpose, and the borrower's home ownership, annual income, employment length, number of open accounts, etc.</p>
 
 </div>
 </div>
@@ -13055,8 +13056,8 @@ M7Occ6A3M8s5B3ozs5xzoDczyzkHejOznPv/wTknms/MYj0AAAAASUVORK5CYII=
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>&nbsp;&nbsp; With the predictors selected above, I built a variety of classification models: Logistic Regression, LDA and QDA, Random Forest, and Gradient Boost. Each classification model was built using the training data set, and the hyperparameters were tuned using cross-validaiton method. The models were evaluated using a comprehensive evaluation metrics such as True (False) Positive (Nagative) predictions as well as recall and precisions rates. Also I calculated the Accuracy and AUC scores and the "Pass rate" (i.e. the proportion of the predicted non-default loans among all loans). The evaluation metrics are computed on the test data set.</p>
-<p>&nbsp;&nbsp; The result table of Logistic regression is listed below:</p>
+<p>&nbsp;&nbsp; With the predictors selected above, I built a variety of classification models: Logistic Regression, LDA and QDA, Random Forest, and Gradient Boost. Each classification model was built using the training data set, and the hyperparameters were tuned using the cross-validation method. The models were evaluated using comprehensive evaluation metrics such as True (False) Positive (Nagative) predictions as well as recall and precision rates. Also I calculated the Accuracy and AUC scores and the "Pass rate" (i.e., the proportion of the predicted non-default loans among all loans). The evaluation metrics were computed on the test data set.</p>
+<p>&nbsp;&nbsp; The results of logistic regression are listed below:</p>
 
 </div>
 </div>
@@ -13127,7 +13128,7 @@ auc score =  0.654660316614
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>&nbsp;&nbsp; Lending Club evaluates the defaul risks of each loan and assigns a credit grade accordingly, with credit grade "A" meaning low default risks and credit grade "F" high default risks. The distribution of Lending Club credit grade and the default rate of each credit grade are listed below:</p>
+<p>&nbsp;&nbsp; Lending Club evaluates the default risks of each loan and assigns a credit grade accordingly, with credit grade "A" meaning low default risks and credit grade "F" high default risks. The distribution of Lending Club credit grades and the default rate of each credit grade are listed below:</p>
 
 </div>
 </div>
@@ -13391,7 +13392,7 @@ RKSelMRFRGJMSVxEJMaUxEVEYkxJXEQkxv4PSfiHStIXvDgAAAAASUVORK5CYII=
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>&nbsp;&nbsp; In the above barplot, the orange bars represent the proportions of loans in each credit grade, and the blue bars represent the default rates of the corresponding credit groups. For example, Lending Club assigns a credit grade "A" to 11.7% of its loans, and the default rate of "A" loans is 14.0%.</p>
+<p>&nbsp;&nbsp; In the above barplot, the orange bars represent the proportion of loans in each credit grade, and the blue bars represent the default rates of the corresponding credit groups. For example, Lending Club assigns a credit grade "A" to 11.7% of its loans, and the default rate of "A" loans is 14.0%.</p>
 
 </div>
 </div>
@@ -13401,7 +13402,7 @@ RKSelMRFRGJMSVxEJMaUxEVEYkxJXEQkxv4PSfiHStIXvDgAAAAASUVORK5CYII=
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>&nbsp;&nbsp; To compare my prediction results with Lending Club's credit grade, I assigned new credit grades ("A", "B", "C", "D", "E", "F", "G") to the loans according to the predicted default probabilities. For the sake of comparability, I set the proportion of each credit grade identical to that of Lending Club. The barplot below shows the default rates among the new credit grades:</p>
+<p>&nbsp;&nbsp; To compare my prediction results with Lending Club's credit grade, I assigned new credit grades ("A", "B", "C", "D", "E", "F", "G") to the loans according to the predicted default probabilities. For the sake of comparability, I set the proportion of each credit grade identical to that of Lending Club. The barplot below shows the default rates for the new credit grades:</p>
 
 </div>
 </div>
@@ -13663,6 +13664,26 @@ i4iE2P8HRFT0jkY0200AAAAASUVORK5CYII=
 <li><p>As discovered in the data visualization part (2.1), the borrower's annual income and debt-to-income ratio have very different influence in loan outcomes under different loan sizes. This suggests that small and large sized loans may be intrinsically different, so that it could be better to first stratify loans by size and then build prediction models for different range of loan size.</p>
 </li>
 </ol>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="5.-Conclusion">5. Conclusion<a class="anchor-link" href="#5.-Conclusion">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>&nbsp;&nbsp; This project builds a variety of classifcation models to predict the default probability of the Lending Club loans based on a set of carefully selected features. The feature analysis shows that a loan's size and term as well as the borrower's annual income, debt-to-income, and home ownership, are the most relevant features to a loan's outcome. In addition, this project compares the performance of the prediction model with the credit grades assigned by Lending Club, and it turns out the prediction model reduces the default rate in investable credit grades ("A" and "B").</p>
+<p>&nbsp;&nbsp; In summary, this project provides a useful loan-selection tool for the Lending Club investors. Risk adverse investors who seek to invest in loans with lower default probabilities should use the prediction model developed in this project, and they can expect to gain from a lower default rate with the number of selectable loans and the interest rates unchanged.</p>
 
 </div>
 </div>
